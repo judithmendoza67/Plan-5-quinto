@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: El Género Dramático - Colegio Montano</title>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-principal: #1269A8;
+            --amarillo-brillante: #F7D615;
+            --verde-grisaceo: #54887D;
+            --azul-claro: #88B5C7;
+            --verde-oliva: #A6B046;
+            --blanco-suave: #F2F5E9;
+            --texto-oscuro: #1A2B3C;
+            --blanco-puro: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #E2E8F0;
+            padding: 15px;
+            color: var(--texto-oscuro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Marco de la Pizarra Digital */
+        .blackboard-frame {
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--blanco-suave);
+            border: 10px solid var(--amarillo-brillante);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Encabezado */
+        .blackboard-header {
+            background-color: var(--azul-principal);
+            color: var(--blanco-puro);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 4px solid var(--verde-grisaceo);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .school-logo {
+            height: 55px;
+            width: auto;
+            background-color: white;
+            padding: 4px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header-titles h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--blanco-puro);
+        }
+
+        .header-titles p {
+            font-size: 0.9rem;
+            color: var(--amarillo-brillante);
+            font-weight: 600;
+        }
+
+        /* Botón Pantalla Completa */
+        .fullscreen-btn {
+            background-color: var(--amarillo-brillante);
+            color: var(--azul-principal);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+
+        .fullscreen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            background-color: #ffe02e;
+        }
+
+        /* Navegación por Pestañas */
+        .tab-nav {
+            background-color: var(--verde-grisaceo);
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--blanco-suave);
+            padding: 14px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 4px solid transparent;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--blanco-puro);
+        }
+
+        .tab-btn.active {
+            background-color: var(--blanco-suave);
+            color: var(--azul-principal);
+            border-bottom: 4px solid var(--amarillo-brillante);
+            font-weight: 700;
+        }
+
+        /* Área de Contenido */
+        .blackboard-content {
+            padding: 30px;
+            min-height: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Secciones de Contenido */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Títulos de Sección */
+        .section-title {
+            color: var(--azul-principal);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--verde-oliva);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Estilos de Teoría */
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .concept-card {
+            background-color: var(--blanco-puro);
+            border-radius: 12px;
+            border-left: 6px solid var(--azul-principal);
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .concept-card h3 {
+            color: var(--azul-principal);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .concept-card p {
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .concept-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .concept-card li {
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .concept-card li::before {
+            content: "•";
+            color: var(--verde-oliva);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .comparative-table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--azul-principal);
+            color: white;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E2E8F0;
+            font-size: 0.9rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        /* Filtros por Nivel */
+        .level-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: #E2E8F0;
+            color: var(--texto-oscuro);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--azul-principal);
+            color: white;
+        }
+
+        /* Tarjetas de Ejemplos y Ejercicios */
+        .item-card {
+            background-color: var(--blanco-puro);
+            border: 1px solid var(--azul-claro);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-basico { background-color: #E3F2FD; color: #1565C0; }
+        .badge-intermedio { background-color: #FFF8E1; color: #F57F17; }
+        .badge-avanzado { background-color: #E8F5E9; color: #2E7D32; }
+
+        .item-title {
+            font-weight: 700;
+            color: var(--azul-principal);
+            font-size: 1rem;
+        }
+
+        .item-body {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .solution-btn {
+            background-color: var(--verde-grisaceo);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .solution-btn:hover {
+            background-color: var(--azul-principal);
+        }
+
+        .solution-box {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #F0F7FA;
+            border-left: 4px solid var(--azul-claro);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Sección de Reflexión */
+        .reflection-card {
+            background-color: var(--blanco-puro);
+            border-top: 5px solid var(--amarillo-brillante);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .reflection-question {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--azul-principal);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Footer */
+        .blackboard-footer {
+            background-color: var(--azul-principal);
+            color: var(--blanco-puro);
+            text-align: center;
+            padding: 12px;
+            font-size: 0.85rem;
+            border-top: 3px solid var(--amarillo-brillante);
+        }
+
+        code {
+            background-color: #EBF3F7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--azul-principal);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blackboard-frame" id="blackboard">
+        <!-- Encabezado -->
+        <header class="blackboard-header">
+            <div class="brand-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" alt="Logo Colegio Montano" class="school-logo" onerror="this.src='https://placehold.co/120x50/1269A8/FFFFFF?text=Montano'">
+                <div class="header-titles">
+                    <h1>Guía Interactiva de Aprendizaje</h1>
+                    <p>Comunicación y Lenguaje • 5to Primaria</p>
+                </div>
+            </div>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                <i class="fa-solid fa-expand"></i> Pantalla Completa
+            </button>
+        </header>
+
+        <!-- Navegación por Pestañas -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('teoria')">
+                <i class="fa-solid fa-masks-theater"></i> 1. Marco Teórico
+            </button>
+            <button class="tab-btn" onclick="switchTab('ejemplos')">
+                <i class="fa-solid fa-lightbulb"></i> 2. Ejemplos de Análisis
+            </button>
+            <button class="tab-btn" onclick="switchTab('ejercicios')">
+                <i class="fa-solid fa-pen-to-square"></i> 3. Ejercicios Prácticos
+            </button>
+            <button class="tab-btn" onclick="switchTab('reflexion')">
+                <i class="fa-solid fa-brain"></i> 4. Reflexión Crítica
+            </button>
+            <button class="tab-btn" onclick="switchTab('evaluacion')">
+                <i class="fa-solid fa-square-check"></i> 5. Evaluación Formativa
+            </button>
+        </nav>
+
+        <!-- Contenido de la Pizarra -->
+        <main class="blackboard-content">
+
+            <!-- SECCIÓN 1: TEORÍA -->
+            <section id="teoria" class="tab-content active">
+                <h2 class="section-title"><i class="fa-solid fa-masks-theater"></i> El Género Dramático: El Arte del Teatro</h2>
+                
+                <!-- Lectura Base / Texto Teórico Breve -->
+                <div class="concept-card" style="border-left-color: var(--amarillo-brillante); background-color: #FFFDF0; margin-bottom: 25px;">
+                    <h3 style="color: var(--azul-principal);"><i class="fa-solid fa-scroll"></i> ¿Qué es el Género Dramático?</h3>
+                    <p style="line-height: 1.6;">
+                        El <strong>género dramático</strong> agrupa todas aquellas obras literarias creadas para ser representadas en un escenario ante un público por medio de actores y diálogos. A diferencia de la narrativa (donde un narrador cuenta la historia), en el género dramático conocemos la historia a través de lo que <strong>dicen</strong> (diálogos) y <strong>hacen</strong> (acciones) los personajes. Su origen proviene de la antigua Grecia y da origen al arte del teatro.
+                    </p>
+                </div>
+
+                <div class="theory-grid">
+                    <!-- Tarjeta Elementos Principales -->
+                    <div class="concept-card">
+                        <h3><i class="fa-solid fa-clapperboard"></i> Elementos del Guion Teatral</h3>
+                        <p>Partes fundamentales de un texto dramático:</p>
+                        <ul>
+                            <li><strong>Diálogos:</strong> Conversación directa entre dos o más personajes.</li>
+                            <li><strong>Acotaciones:</strong> Indicaciones del autor escritas entre paréntesis ( ) para marcar movimientos, emociones o vestuario.</li>
+                            <li><strong>Personajes:</strong> Protagonista (principal), Antagonista (opuesto) y Secundarios.</li>
+                            <li><strong>Escenografía:</strong> Decoración y ambientación del escenario.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Estructura Externa -->
+                    <div class="concept-card">
+                        <h3><i class="fa-solid fa-layer-group"></i> Estructura Externa de la Obra</h3>
+                        <p>División del texto dramático:</p>
+                        <ul>
+                            <li><strong>Actos:</strong> Unidades mayores marcadas por la subida y bajada del telón.</li>
+                            <li><strong>Cuadros:</strong> Cambios de lugar o ambientación del escenario.</li>
+                            <li><strong>Escenas:</strong> Se marcan por la entrada o salida de personajes del escenario.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Subgéneros Dramáticos -->
+                    <div class="concept-card">
+                        <h3><i class="fa-solid fa-masks-theater"></i> Principales Subgéneros</h3>
+                        <p>Tipos de obras teatrales:</p>
+                        <ul>
+                            <li><strong>Tragedia:</strong> Presenta hechos lamentables con un final triste o desafortunado.</li>
+                            <li><strong>Comedia:</strong> Presenta situaciones divertidas con un final feliz.</li>
+                            <li><strong>Drama o Tragicomedia:</strong> Mezcla elementos serios y cómicos, similar a la vida real.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--azul-principal); margin: 20px 0 10px 0;">Cuadro Comparativo: Texto Narrativo vs. Texto Dramático</h3>
+                <div class="comparative-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Texto Narrativo (Cuento/Novela)</th>
+                                <th>Texto Dramático (Guion de Teatro)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Propósito</strong></td>
+                                <td>Ser leído y contado.</td>
+                                <td>Ser representado en un escenario ante público.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Voz Principal</strong></td>
+                                <td>El Narrador cuenta los hechos.</td>
+                                <td>Los Personajes hablan directamente en Diálogo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Indicaciones Escénicas</strong></td>
+                                <td>Descripciones integradas en párrafos.</td>
+                                <td><strong>Acotaciones</strong> entre paréntesis (movimientos, voz).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>División del Texto</strong></td>
+                                <td>Capítulos y Párrafos.</td>
+                                <td>Actos, Cuadros y Escenas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: EJEMPLOS RESUELTOS -->
+            <section id="ejemplos" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-lightbulb"></i> Ejemplos Resueltos de Análisis Dramático</h2>
+
+                <!-- Filtro por Nivel -->
+                <div class="level-filter">
+                    <button class="filter-btn active" onclick="filterItems('ejemplo', 'todos')">Todos</button>
+                    <button class="filter-btn" onclick="filterItems('ejemplo', 'basico')">Básico</button>
+                    <button class="filter-btn" onclick="filterItems('ejemplo', 'intermedio')">Intermedio</button>
+                    <button class="filter-btn" onclick="filterItems('ejemplo', 'avanzado')">Avanzado</button>
+                </div>
+
+                <!-- 5 Ejemplos Básicos -->
+                <div class="item-card ejemplo basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 1: Identificación de Acotaciones</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Texto:</em> LUNA: (Suspirando con tristeza) No encuentro mi sombrero de estrellas.<br>
+                        <em>Pregunta:</em> ¿Cuál es la acotación en este fragmento?<br>
+                        <em>Respuesta Resuelta:</em> <code>(Suspirando con tristeza)</code>.<br>
+                        <em>Explicación:</em> La acotación va entre paréntesis e indica al actor la emoción o tono de voz con que debe hablar.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 2: Reconocimiento de Personajes</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Cómo sabemos quién está hablando en un guion teatral?<br>
+                        <em>Respuesta Resuelta:</em> Porque el nombre del personaje se escribe al inicio en mayúsculas seguido de dos puntos (ejemplo: <strong>CARLOS:</strong>).<br>
+                        <em>Explicación:</em> Es el formato estándar de los diálogos en el género dramático.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 3: Identificación de Escenas</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> En una obra de teatro, ¿qué marca el cambio de una escena a otra?<br>
+                        <em>Respuesta Resuelta:</em> La entrada o salida de algún personaje del escenario.<br>
+                        <em>Explicación:</em> Cada vez que un personaje entra o sale del área de actuación, inicia una nueva escena.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 4: Subgénero Comedia</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> Si una obra dramática hace reír al público y termina de forma alegre, ¿a qué subgénero pertenece?<br>
+                        <em>Respuesta Resuelta:</em> A la <strong>Comedia</strong>.<br>
+                        <em>Explicación:</em> La comedia busca divertir al espectador a través del humor y un desenlace positivo.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 5: Definición de Acto</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Cómo sabe el público que ha terminado un Acto durante una función teatral?<br>
+                        <em>Respuesta Resuelta:</em> Por la bajada del telón o por un apague total de luces (oscuro).<br>
+                        <em>Explicación:</em> Los actos son las partes principales en las que se divide la obra completa.
+                    </div>
+                </div>
+
+                <!-- 5 Ejemplos Intermedios -->
+                <div class="item-card ejemplo intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 6: Conversión de Cuento a Guion Teatral</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Texto Narrativo:</em> Caperucita caminaba alegre por el bosque cuando el Lobo la saludó sonoramente.<br>
+                        <em>Conversión a Guion:</em><br>
+                        (Escena 1. El bosque. CAPERUCITA entra dando saltitos con su cesta).<br>
+                        LOBO: (Apareciendo de repente tras un árbol, con voz grave) ¡Hola, linda niña! ¿Hacia dónde vas?<br>
+                        <em>Explicación:</em> Se eliminó al narrador, se colocaron acciones entre paréntesis y diálogos directos.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 7: Función de las Acotaciones de Escenografía</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Texto:</em> <code>(La escena transcurre en la biblioteca de un viejo castillo. Hay libros apilados en el suelo y una ventana con lluvia).</code><br>
+                        <em>Pregunta:</em> ¿A quién va dirigida esta acotación principalmente?<br>
+                        <em>Respuesta Resuelta:</em> Al escenógrafo y al director de la obra para organizar la decoración del escenario.<br>
+                        <em>Explicación:</em> No todas las acotaciones son para los actores; algunas describen el espacio físico.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 8: Distinción entre Monólogo y Diálogo</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> En una obra, el Rey se queda solo en el escenario y expresa en voz alta sus pensamientos sobre su reino. ¿Es diálogo o monólogo?<br>
+                        <em>Respuesta Resuelta:</em> Es un <strong>Monólogo</strong> o soliloquio.<br>
+                        <em>Explicación:</em> Un diálogo requiere dos o más hablantes; el monólogo es el discurso de un solo personaje hablando consigo mismo o dirigiéndose al público.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 9: Conflicto Dramático</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Qué es el "conflicto dramático" en una obra de teatro?<br>
+                        <em>Respuesta Resuelta:</em> Es la lucha o enfrentamiento entre dos fuerzas opuestas (generalmente el protagonista y el antagonista) que impulsa la acción del drama.<br>
+                        <em>Explicación:</em> Sin conflicto no hay emoción ni desarrollo de la historia teatral.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 10: Análisis de Personaje Antagonista</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Cuál es el rol del personaje antagonista en un texto teatral?<br>
+                        <em>Respuesta Resuelta:</em> Oponerse a los deseos u objetivos del personaje protagonista, creando obstáculos.<br>
+                        <em>Explicación:</em> Genera tensión e interés en el desarrollo de la trama.
+                    </div>
+                </div>
+
+                <!-- 5 Ejemplos Avanzados -->
+                <div class="item-card ejemplo avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 11: Análisis Complejo de Acotaciones Múltiples</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Texto:</em> MAESTRO: (Golpeando la mesa con fuerza, luciendo molesto pero guiñando un ojo al público) ¡Silencio total en la clase!<br>
+                        <em>Pregunta:</em> ¿Qué doble intención revela la acotación sobre la actuación del personaje?<br>
+                        <em>Respuesta Resuelta:</em> Revela que el personaje finge estar enojado frente a los demás personajes de la obra, pero en verdad está tranquilo o bromeando (complicidad con el público).<br>
+                        <em>Explicación:</em> Combina acotaciones gestuales y de comunicación indirecta (aparte dramático).
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 12: Transformación Narrativa a Estructura Teatral</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Cómo dividirías un cuento clásico como "Los tres cerditos" en 3 Actos dramáticos?<br>
+                        <em>Respuesta Resuelta:</em><br>
+                        • <strong>Acto I:</strong> Construcción de las casas de paja, madera y ladrillo.<br>
+                        • <strong>Acto II:</strong> El Lobo destruye las dos primeras casas y la huida de los cerditos.<br>
+                        • <strong>Acto III:</strong> El enfrentamiento en la casa de ladrillo y la derrota del Lobo.<br>
+                        <em>Explicación:</em> Mapea el planteamiento, nudo y desenlace a la estructura de actos dramáticos.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 13: Identificación del "Aparte" Teatral</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Qué es un "Aparte" dentro del guion teatral?<br>
+                        <em>Respuesta Resuelta:</em> Es un comentario breve que un personaje dice en voz baja mirando al público, simulando que los otros personajes en escena no lo escuchan.<br>
+                        <em>Explicación:</em> Es un recurso dramático para compartir secretos o pensamientos con la audiencia.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 14: Distinción entre Cuadro y Escena</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> Si durante una obra los actores cambian el vestuario y el escenario pasa de ser un bosque a un castillo sin bajar el telón de acto, ¿qué cambió?<br>
+                        <em>Respuesta Resuelta:</em> Cambió de <strong>Cuadro</strong>.<br>
+                        <em>Explicación:</em> El cuadro indica cambio de escenografía o lugar, mientras que la escena indica cambio de personajes.
+                    </div>
+                </div>
+
+                <div class="item-card ejemplo avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejemplo 15: Evaluación de la Función del Director de Teatro</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        <em>Pregunta:</em> ¿Por qué el texto dramático requiere una interpretación técnica para convertirse en espectáculo teatral?<br>
+                        <em>Respuesta Resuelta:</em> Porque el guion es la base escrita; el director, los actores, técnicos de luces y vestuaristas deben interpretar las acotaciones y diálogos para darle vida en tres dimensiones ante un público en vivo.<br>
+                        <em>Explicación:</em> Distingue entre la obra dramática (texto) y la obra teatral (representación).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: EJERCICIOS PRÁCTICOS -->
+            <section id="ejercicios" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Ejercicios Prácticos</h2>
+
+                <div class="level-filter">
+                    <button class="filter-btn active" onclick="filterItems('ejercicio', 'todos')">Todos</button>
+                    <button class="filter-btn" onclick="filterItems('ejercicio', 'basico')">Básico</button>
+                    <button class="filter-btn" onclick="filterItems('ejercicio', 'intermedio')">Intermedio</button>
+                    <button class="filter-btn" onclick="filterItems('ejercicio', 'avanzado')">Avanzado</button>
+                </div>
+
+                <!-- 5 Ejercicios Básicos -->
+                <div class="item-card ejercicio basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 1: Localización de Acotaciones</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        En el siguiente texto, identifica cuál es la acotación:<br>
+                        REINA: (Con voz firme mientras levanta su cetro) ¡Que comience el torneo real!
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-1')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-1" class="solution-box">
+                        <strong>Respuesta:</strong> <code>(Con voz firme mientras levanta su cetro)</code>.<br>
+                        <em>Explicación:</em> Indica los ademanes y el tono del personaje entre paréntesis.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 2: Verdadero o Falso</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        Indica si es Verdadero (V) o Falso (F):<br>
+                        <em>"En las obras teatrales, un narrador siempre lee en voz alta todo lo que piensan los personajes."</em>
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-2')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-2" class="solution-box">
+                        <strong>Respuesta:</strong> <strong>Falso (F)</strong>.<br>
+                        <em>Explicación:</em> En el género dramático predomina el diálogo directo entre los personajes, no la narración contada.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 3: Completación de Términos</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        Completa la oración:<br>
+                        Las indicaciones que el autor escribe entre paréntesis para orientar a los actores se llaman ________________.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-3')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-3" class="solution-box">
+                        <strong>Respuesta:</strong> <strong>Acotaciones</strong>.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 4: Emparejamiento de Subgéneros</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        ¿Qué subgénero dramático provoca risa en los espectadores y tiene un desenlace alegre?
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-4')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-4" class="solution-box">
+                        <strong>Respuesta:</strong> La <strong>Comedia</strong>.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio basico">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 5: Formato de Diálogo</span>
+                        <span class="badge badge-basico">Básico</span>
+                    </div>
+                    <div class="item-body">
+                        Reescribe correctamente el siguiente renglón para un guion dramático:<br>
+                        <em>Pedro dijo enojado que no quería comer verduras.</em>
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-5')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-5" class="solution-box">
+                        <strong>Respuesta Sugerida:</strong><br>
+                        PEDRO: (Enojado) ¡No quiero comer verduras!
+                    </div>
+                </div>
+
+                <!-- 5 Ejercicios Intermedios -->
+                <div class="item-card ejercicio intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 6: Redacción de Acotaciones de Gestos y Movimiento</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        Agrega una acotación adecuada al siguiente diálogo:<br>
+                        DETECTIVE: ¿Dónde dejó usted las llaves del auto esta mañana?
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-6')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-6" class="solution-box">
+                        <strong>Respuesta Sugerida:</strong><br>
+                        DETECTIVE: <code>(Ajustándose la lupa y mirando fijamente al sospechoso)</code> ¿Dónde dejó usted las llaves del auto esta mañana?
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 7: Clasificación de Elementos del Teatro</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        Clasifica los siguientes elementos en <em>Texto Escrito</em> o <em>Representación Escénica</em>:<br>
+                        a) Acotaciones &nbsp;&nbsp; b) Luces de reflector &nbsp;&nbsp; c) Maquillaje de actores &nbsp;&nbsp; d) Diálogos impresos
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-7')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-7" class="solution-box">
+                        <strong>Respuesta:</strong><br>
+                        • <strong>Texto Escrito:</strong> a) Acotaciones, d) Diálogos impresos.<br>
+                        • <strong>Representación Escénica:</strong> b) Luces de reflector, c) Maquillaje de actores.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 8: Identificación de Escenas y Personajes</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        Si en una obra están conversando el Rey y el Duque, y de repente entra el Guardia a entregar una carta, ¿qué ocurre con la escena?
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-8')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-8" class="solution-box">
+                        <strong>Respuesta:</strong> Inicia la <strong>Escena 2</strong> (o la siguiente escena), ya que la entrada de un nuevo personaje modifica la escena activa.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 9: Adaptación Narrativa a Teatro</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        Convierte el siguiente microcuento a formato de guion teatral:<br>
+                        <em>El conejo miró su reloj asustado porque llegaba tarde a la merienda de la reina.</em>
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-9')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-9" class="solution-box">
+                        <strong>Respuesta Sugerida:</strong><br>
+                        CONEJO: (Revisando nerviosamente un gran reloj de bolsillo) ¡Oh no! ¡Llegaré tardísimo a la merienda de la Reina! (Sale corriendo atolondrado).
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio intermedio">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 10: Análisis de Subgénero (Tragedia vs Drama)</span>
+                        <span class="badge badge-intermedio">Intermedio</span>
+                    </div>
+                    <div class="item-body">
+                        Una obra trata sobre un héroe que intenta salvar su ciudad pero un terrible destino destruye sus plans sin remedio. ¿Cuál es su subgénero dramático?
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-10')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-10" class="solution-box">
+                        <strong>Respuesta:</strong> Es una <strong>Tragedia</strong>.
+                    </div>
+                </div>
+
+                <!-- 5 Ejercicios Avanzados -->
+                <div class="item-card ejercicio avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 11: Corrección de Guion Defectuoso</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        Encuentra los 2 errores en el formato de este fragmento dramático:<br>
+                        <em>El duende sonrió y dijo (alegremente) - Hola amiguitos, bienvenidos a mi cueva.</em>
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-11')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-11" class="solution-box">
+                        <strong>Errores encontrados:</strong><br>
+                        1. Contiene texto del narrador ("dijo").<br>
+                        2. No usa el nombre del personaje al inicio en mayúsculas.<br><br>
+                        <strong>Formato Correcto:</strong><br>
+                        DUENDE: (Sonriendo alegremente) ¡Hola amiguitos, bienvenidos a mi cueva!
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 12: Diseño de Escenografía mediante Acotación</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        Escribe una acotación inicial para un acto cuyo escenario sea una nave espacial futurista a punto de despegar.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-12')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-12" class="solution-box">
+                        <strong>Respuesta Sugerida:</strong><br>
+                        <code>(Acto I. Sala de control de una nave espacial. Al fondo se observan luces parpadeantes y pantallas gigantes. Se escucha el sonido del motor en cuenta regresiva. La iluminación es azul intensa).</code>
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 13: Creación de un Diálogo con Conflicto</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        Redacta un guion breve (2 réplicas) entre un astronauta (protagonista) y una inteligencia artificial (antagonista) que se niega a abrir la puerta de la nave.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-13')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-13" class="solution-box">
+                        <strong>Ejemplo de Solución:</strong><br>
+                        ASTRONAUTA: (Presionando los botones con desesperación) ¡Robot-9000, abre la compuerta inmediatamente!<br>
+                        ROBOT-9000: (Con voz robótica y fría) Lo siento, astronauta. Las órdenes del sistema me impiden abrir la puerta.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 14: Distinción entre Guionista y Director</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        Explica la diferencia de responsabilidades entre el <strong>dramaturgo</strong> y el <strong>director teatral</strong>.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-14')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-14" class="solution-box">
+                        <strong>Respuesta:</strong><br>
+                        • <strong>Dramaturgo:</strong> Es el autor que escribe el texto dramático (el guion).<br>
+                        • <strong>Director:</strong> Es quien guía a los actores y coordina la producción para representar el guion en un escenario real.
+                    </div>
+                </div>
+
+                <div class="item-card ejercicio avanzado">
+                    <div class="item-header">
+                        <span class="item-title">Ejercicio 15: Análisis de Efectos de Sonido en Acotaciones</span>
+                        <span class="badge badge-avanzado">Avanzado</span>
+                    </div>
+                    <div class="item-body">
+                        ¿Qué importancia tienen las acotaciones sonoras como <em>(Se escucha un trueno lejano)</em> en una obra teatral?
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('sol-ej-15')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución
+                    </button>
+                    <div id="sol-ej-15" class="solution-box">
+                        <strong>Respuesta:</strong> Crean la atmósfera emocional (suspenso, miedo, alegría) en el público y ayudan a los actores a reaccionar en el momento exacto.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: REFLEXIÓN CRÍTICA -->
+            <section id="reflexion" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-brain"></i> Preguntas de Reflexión Crítica</h2>
+
+                <div class="reflection-card">
+                    <div class="reflection-question">
+                        <i class="fa-solid fa-comments" style="color: var(--amarillo-brillante);"></i>
+                        1. La Empatía a través del Teatro
+                    </div>
+                    <p>Cuando un actor interpreta a un personaje muy diferente a él (por ejemplo, una persona mayor o alguien con una cultura distinta), ¿de qué manera el teatro nos ayuda a ponernos en los zapatos de los demás y desarrollar empatía en la vida diaria?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <div class="reflection-question">
+                        <i class="fa-solid fa-comments" style="color: var(--verde-grisaceo);"></i>
+                        2. El Trabajo en Equipo Escénico
+                    </div>
+                    <p>En una representación teatral se necesita de actores, escenógrafos, vestuaristas y encargados de sonido. Si falla uno solo de ellos, ¿cómo se ve afectada toda la función? ¿Qué nos enseña esto sobre el trabajo en equipo en el salón de clases?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <div class="reflection-question">
+                        <i class="fa-solid fa-scale-balanced" style="color: var(--azul-principal);"></i>
+                        3. Expresión Corporal y Emocional
+                    </div>
+                    <p>Las acotaciones indican cómo debe moverse y hablar un personaje. En nuestra vida cotidiana, ¿crees que nuestro lenguaje corporal (gestos, postura) transmite lo que sentimos aun cuando no decimos palabras?</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: EVALUACIÓN FORMATIVA -->
+            <section id="evaluacion" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-square-check"></i> Evaluación Formativa de Comprensión</h2>
+                <p style="margin-bottom: 20px;">Lee con atención las actividades, resuelve en tu cuaderno de Comunicación y Lenguaje y despliega las soluciones para autoevaluar tu aprendizaje.</p>
+
+                <!-- Pregunta Evaluativa 1 -->
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Pregunta 1: Creación de Guion Teatral Breve</span>
+                    </div>
+                    <div class="item-body">
+                        Escribe en tu cuaderno un guion teatral corto de 1 escena titulado "El rescate en el parque". Debe incluir:<br>
+                        - 2 Personajes principales.<br>
+                        - Al menos 3 acotaciones (movimiento, emoción y sonido).<br>
+                        - Formato correcto de nombres y diálogos.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('eval-sol-1')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución Formativa
+                    </button>
+                    <div id="eval-sol-1" class="solution-box">
+                        <strong>Ejemplo de Solución Formativa en Cuaderno:</strong><br><br>
+                        <strong>Título: El rescate en el parque</strong><br>
+                        <code>(Escena 1. Un parque soleado. Se escucha el maullido de un gatito al fondo).</code><br>
+                        SOFÍA: (Mirando hacia la copa de un árbol con preocupación) ¡Mira, Mateo! El gatito no puede bajar.<br>
+                        MATEO: (Tranquilizándola, mientras saca una lata de comida de su mochila) No te preocupes. Con este aroma bajará de inmediato.<br>
+                        <code>(Mateo abre la lata. Se oye un maullido alegre).</code>
+                    </div>
+                </div>
+
+                <!-- Pregunta Evaluativa 2 -->
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Pregunta 2: Transformación de Texto Narrativo a Dramático</span>
+                    </div>
+                    <div class="item-body">
+                        Transforma la siguiente narración en un texto del género dramático:<br>
+                        <em>"El sabio búho le aconsejó a la ardilla asustada que escondiera sus bellotas antes de que comenzara el invierno."</em>
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('eval-sol-2')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución Formativa
+                    </button>
+                    <div id="eval-sol-2" class="solution-box">
+                        <strong>Solución Paso a Paso:</strong><br><br>
+                        BÚHO: (Ajustándose los anteojos con voz pausada y sabia) Escúchame con atención, amiguita.<br>
+                        ARDILLA: (Temblando de frío y con los ojos muy abiertos) ¡Tengo mucho miedo del invierno, señor Búho!<br>
+                        BÚHO: (Señalando un hueco en el árbol) Debes guardar todas tus bellotas ahí antes de que caiga la primera nieve.
+                    </div>
+                </div>
+
+                <!-- Pregunta Evaluativa 3 -->
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Pregunta 3: Análisis de Elementos Teatrales</span>
+                    </div>
+                    <div class="item-body">
+                        Explica brevemente la diferencia entre un <strong>Acto</strong>, una <strong>Escena</strong> y un <strong>Cuadro</strong> en una obra de teatro.
+                    </div>
+                    <button class="solution-btn" onclick="toggleSolution('eval-sol-3')">
+                        <i class="fa-solid fa-eye"></i> Mostrar Solución Formativa
+                    </button>
+                    <div id="eval-sol-3" class="solution-box">
+                        <strong>Respuestas Esperadas:</strong><br>
+                        • <strong>Acto:</strong> Parte principal de la obra (marca inicio, nudo o desenlace; cae el telón).<br>
+                        • <strong>Escena:</strong> Subdivisión dentro del acto que cambia cuando un personaje entra o sale.<br>
+                        • <strong>Cuadro:</strong> Cambio en la escenografía o ambientación del lugar.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="blackboard-footer">
+            Colegio Montano • Material Educativo Digital Adaptado para Canvas Education
+        </footer>
+    </div>
+
+    <!-- Script de Interacción y Lógica -->
+    <script>
+        // Función para cambiar de Pestañas
+        function switchTab(tabId) {
+            // Ocultar todos los contenidos de pestañas
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Desactivar todos los botones de pestaña
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Activar pestaña seleccionada
+            document.getElementById(tabId).classList.add('active');
+
+            // Resaltar botón correspondiente
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+
+        // Función para Mostrar/Ocultar Soluciones
+        function toggleSolution(solutionId) {
+            const solutionBox = document.getElementById(solutionId);
+            const btn = solutionBox.previousElementSibling;
+
+            if (solutionBox.style.display === "block") {
+                solutionBox.style.display = "none";
+                btn.innerHTML = '<i class="fa-solid fa-eye"></i> Mostrar Solución';
+            } else {
+                solutionBox.style.display = "block";
+                btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Ocultar Solución';
+            }
+        }
+
+        // Función para Filtrar Ejemplos y Ejercicios por Nivel
+        function filterItems(type, level) {
+            const items = document.querySelectorAll('.' + type);
+            const buttons = event.target.parentElement.querySelectorAll('.filter-btn');
+
+            // Cambiar estado activo de los botones del filtro
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Mostrar/Ocultar elementos según nivel
+            items.forEach(item => {
+                if (level === 'todos') {
+                    item.style.display = 'block';
+                } else {
+                    if (item.classList.contains(level)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Función de Pantalla Completa (Fullscreen API)
+        function toggleFullscreen() {
+            const blackboard = document.getElementById('blackboard');
+            
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (blackboard.requestFullscreen) {
+                    blackboard.requestFullscreen();
+                } else if (blackboard.webkitRequestFullscreen) { /* Safari */
+                    blackboard.webkitRequestFullscreen();
+                } else if (blackboard.msRequestFullscreen) { /* IE11 */
+                    blackboard.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
